@@ -9,6 +9,14 @@
             <div class="float-right my-2">
                 <a class="btn btn-success" href="{{ route('mahasiswas.create') }}"> Input Mahasiswa</a>
             </div>
+            <form action="{{ route('mahasiswas.index') }}" method="GET">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="search" placeholder="Cari Nama Mahasiswa" value="{{ $search }}">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="submit">Cari</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
  
@@ -52,4 +60,8 @@
         </tr>
         @endforeach
     </table>
+    <!-- Tampilkan link pagination -->
+    <div class="pagination">
+        {{ $mahasiswas->appends(['search' => $search])->links() }}
+    </div>
 @endsection
